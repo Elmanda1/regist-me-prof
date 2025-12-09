@@ -1,6 +1,6 @@
 <?php 
 if (!isset($sJenisTitle)) $sJenisTitle="Prof.,DR.,Dr.,Mr.,Mrs.,Ms.,Miss.";
-$pProfesi= um412_isicombo5("R1:select id, REPLACE(title, 'Symposium ', '') as title from master_data where jenis='symposium' and status<>2 order by kode","profesi","id","title","" ,$profesi,"gantiProfesi($rnd)");	
+$pProfesi= um412_isicombo5("R1:select id, REPLACE(title, 'Symposium ', '') as title from master_data where jenis='symposium' and status<>2 order by kode","profesi","title","title","- Pilih -" ,$profesi,"gantiProfesi($rnd)");	
 $pSponsor= um412_isicombo5('select * from master_sponsor order by sponsor ',"sp_company","id","sponsor","- ".translate("TANPA SPONSOR","NO SPONSORSHIP")." -" ,$sp_company,"cekSponsor($rnd)");	
 $hi=' <span class="harusisi">*</span>';
 if ($idgroup*1!=0) 
@@ -215,6 +215,14 @@ $formBiodata.='
     <div class="col-sm-4"  valign=top  valign=top>'.$translate["profesi"].'</div>
     <div class="col-sm-8" valign=top class=tdform2x colspan=2 id="tprofesi_'.$rnd.'">'.$pProfesi.'</div>
  </div>
+	';
+
+// Container untuk list workshop/symposium yang dimuat saat profesi dipilih
+$formBiodata.='
+<div class="form-group" id="tworkshop_'.$rnd.'" style="display:none;">
+    <div class="col-sm-4"  valign=top>Available Events</div>
+    <div class="col-sm-8" valign=top class=tdform2x colspan=2 id="tworkshop_list_'.$rnd.'"></div>
+</div>
 	';
 
 $isiSociety=um412_isicombo6("Indonesian Society of Respirology (PDPI);PDPI,Indonesia Association of Thoracic and Cardiovascular Surgeons (HBTKVI);HBTKVI,The Indonesian Society of Radiology (PDSRI);PDSRI,Indonesian Neurological Association (PERDOSSI);PERDOSSI,Indonesian Heart Association (PERKI);PERKI,The Indonesian Society of Anesthesiology and Intensive Therapy (PERDATIN);PERDATIN,The Indonesian of Physical Medicine and Rehabilitation Association (PERDOSRI);PERDOSRI,Indonesian Pediatric Society (IDAI);IDAI,The Indonesia Otorhinolaryngological Head and Neck Surgery Society (PERHATI-KL);PERHATI-KL,Indonesian Association of Clinical Pathologist (PATKLIN);PATKLIN,The Indonesian Physician of Community Medicine and Public Health Association (PDK3MI);PDK3MI,Indonesian Sport Medicine Association (PDSKO);PDSKO,Indonesian Society Clinical Microbiology (PAMKI);PAMKI,Indonesian Association of Obstetrics and Gynecology (POGI);POGI","cat, style='width: 620px;max-width: 100%;'");
