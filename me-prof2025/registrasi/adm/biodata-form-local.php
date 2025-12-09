@@ -1,7 +1,6 @@
 <?php 
-if (!isset($sJenisProfesi)) $sJenisProfesi="Specialist,General Practitioner,Resident,Fellow,Scientist,Nurse,Student";
 if (!isset($sJenisTitle)) $sJenisTitle="Prof.,DR.,Dr.,Mr.,Mrs.,Ms.,Miss.";
-$pProfesi= um412_isicombo5("R1:$sJenisProfesi","profesi","profesi","profesi",'- Choose One -' ,$profesi,"gantiProfesi($rnd)");	
+$pProfesi= um412_isicombo5("R1:select id, REPLACE(title, 'Symposium ', '') as title from master_data where jenis='symposium' and status<>2 order by kode","profesi","id","title","" ,$profesi,"gantiProfesi($rnd)");	
 $pSponsor= um412_isicombo5('select * from master_sponsor order by sponsor ',"sp_company","id","sponsor","- ".translate("TANPA SPONSOR","NO SPONSORSHIP")." -" ,$sp_company,"cekSponsor($rnd)");	
 $hi=' <span class="harusisi">*</span>';
 if ($idgroup*1!=0) 
