@@ -1,0 +1,15 @@
+.imgfull {
+ 	width:100%;
+	max-width:1100px;
+	margin-bottom:10px;
+}
+
+body,
+#header {
+	background-color:#ffffff ;
+}
+
+#maincontent,
+.maincontent {
+	padding:20px;
+}
