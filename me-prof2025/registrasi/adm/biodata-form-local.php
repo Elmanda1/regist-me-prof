@@ -1,6 +1,6 @@
 <?php 
 if (!isset($sJenisTitle)) $sJenisTitle="Prof.,DR.,Dr.,Mr.,Mrs.,Ms.,Miss.";
-$pProfesi= um412_isicombo5("R1:select id, REPLACE(title, 'Symposium ', '') as title from master_data where jenis='symposium' and status<>2 order by kode","profesi","title","title","- Pilih -" ,$profesi,"gantiProfesi($rnd)");	
+$pProfesi= um412_isicombo5("R1:select TRIM(REPLACE(sprofesi, '|', '')) as id, TRIM(REPLACE(sprofesi, '|', '')) as title from master_data where (jenis='symposium' or jenis='workshop') and status<>2 group by sprofesi order by sprofesi","profesi","id","title","- Pilih -" ,$profesi,"gantiProfesi($rnd)");
 $pSponsor= um412_isicombo5('select * from master_sponsor order by sponsor ',"sp_company","id","sponsor","- ".translate("TANPA SPONSOR","NO SPONSORSHIP")." -" ,$sp_company,"cekSponsor($rnd)");	
 $hi=' <span class="harusisi">*</span>';
 if ($idgroup*1!=0) 
